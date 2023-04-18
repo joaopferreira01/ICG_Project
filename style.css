@@ -1,0 +1,30 @@
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+
+body {
+  margin: 0;
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+button {
+  outline: none;
+  cursor: pointer;
+  border: none;
+  box-shadow: 3px 5px 0px 0px rgba(0, 0, 0, 0.75);
+}
+
+a,
+a:visited {
+  color: inherit;
+}
+
+#buttons {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  display: none;
+}
+
+
+
+  
