@@ -1,0 +1,11 @@
+Model Information:
+* title:	Statue of Liberty 3D Scan
+* source:	https://sketchfab.com/3d-models/statue-of-liberty-3d-scan-8e808365b5a6453497826b114b02f155
+* author:	Metron3D (https://sketchfab.com/metron3d)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Statue of Liberty 3D Scan" (https://sketchfab.com/3d-models/statue-of-liberty-3d-scan-8e808365b5a6453497826b114b02f155) by Metron3D (https://sketchfab.com/metron3d) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
