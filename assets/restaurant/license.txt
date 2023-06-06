@@ -1,0 +1,11 @@
+Model Information:
+* title:	restaurant 3D Model
+* source:	https://sketchfab.com/3d-models/restaurant-3d-model-3328ee2725214fbea674e8b097a252ee
+* author:	munish kumar singla (https://sketchfab.com/munishkumarsingla)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "restaurant 3D Model" (https://sketchfab.com/3d-models/restaurant-3d-model-3328ee2725214fbea674e8b097a252ee) by munish kumar singla (https://sketchfab.com/munishkumarsingla) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

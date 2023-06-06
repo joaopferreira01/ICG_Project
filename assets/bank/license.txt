@@ -1,0 +1,11 @@
+Model Information:
+* title:	Bank Model For Blender
+* source:	https://sketchfab.com/3d-models/bank-model-for-blender-b0f63ee0f8f2433989b8a205a99840c7
+* author:	mikejap6 (https://sketchfab.com/mikejap6)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Bank Model For Blender" (https://sketchfab.com/3d-models/bank-model-for-blender-b0f63ee0f8f2433989b8a205a99840c7) by mikejap6 (https://sketchfab.com/mikejap6) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
