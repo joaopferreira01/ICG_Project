@@ -1,7 +1,7 @@
 import * as THREE from 'https://cdn.skypack.dev/three@0.129.0/build/three.module.js';
 import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js';
 
-let obj_modeled1, obj_modeled2, obj_modeled3, obj_modeled4, obj_modeled5, obj_modeled6;
+let obj_modeled1, obj_modeled2, obj_modeled3, obj_modeled4, obj_modeled5, obj_modeled6, obj_modeled7;
 
 const scene = new THREE.Scene();
 const gltfLoader = new GLTFLoader();
@@ -150,6 +150,28 @@ function load_model6(callback) {
     });
 }
 
+function load_model7(callback) {
+    gltfLoader.load('assets/mustang/scene.gltf', (gltfScene) => {
+        obj_modeled7 = gltfScene;
+        obj_modeled7.scene.rotation.x = Math.PI / 2
+        // obj_modeled7.scene.rotation.y = Math.PI / 5
+        // obj_modeled7.scene.rotation.z = Math.PI / 2
+        obj_modeled7.scene.scale.set(20, 20, 20);
+
+        let shadows_house;
+        obj_modeled7.scene.traverse((child) => {
+            if (child.isMesh) {
+                shadows_house = child
+                shadows_house.castShadow = true
+            }
+        })
+        scene.add(obj_modeled7.scene);
+        if (callback) {
+            callback();
+        }
+    });
+}
+
 
 export {
     load_model,
@@ -159,11 +181,13 @@ export {
     load_model3,
     obj_modeled3,
     load_model4,
-    obj_modeled4, 
+    obj_modeled4,
     load_model5,
     obj_modeled5,
     load_model6,
-    obj_modeled6
+    obj_modeled6, 
+    load_model7,
+    obj_modeled7
 };
 
 
