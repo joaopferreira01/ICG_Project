@@ -1,10 +1,7 @@
 import {
   load_model, obj_modeled1,
-  load_model2, obj_modeled2,
-  load_model3, obj_modeled3,
-  load_model4, obj_modeled4,
-  load_model5, obj_modeled5,
-  load_model6, obj_modeled6
+  load_model6, obj_modeled6,
+  load_model7, obj_modeled7
 } from './new.js'
 
 window.focus(); // Capture keys right away (by default focus is on editor)
@@ -13,6 +10,9 @@ window.focus(); // Capture keys right away (by default focus is on editor)
 function pickRandom(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
+
+var first_person = false;
+var third_person = true;
 
 const vehicleColors = [
   0xa52523,
@@ -49,7 +49,7 @@ const config = {
 };
 
 let score;
-const speed = 0.0030;
+const speed = 0.0001;
 
 const playerAngleInitial = Math.PI;
 let playerAngleMoved;
@@ -100,7 +100,13 @@ camera.lookAt(new THREE.Vector3(0, -100, 0)); // ajusta o alvo da câmera
 
 const scene = new THREE.Scene();
 
-const playerCar = Car();
+load_model7(() => {
+  scene.add(obj_modeled7.scene)
+})
+
+await delay(200)
+
+var playerCar = obj_modeled7;
 scene.add(playerCar);
 
 
@@ -142,7 +148,6 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 if (config.shadows) renderer.shadowMap.enabled = true;
 document.body.appendChild(renderer.domElement);
 
-let controls = new THREE.OrbitControls(camera, renderer.domElement);
 
 
 
@@ -181,6 +186,8 @@ function startGame() {
     renderer.setAnimationLoop(animation);
   }
 }
+
+startGame();
 
 function getLineMarkings(mapWidth, mapHeight) {
   const canvas = document.createElement("canvas");
@@ -458,20 +465,20 @@ function renderMap(mapWidth, mapHeight) {
     scene.add(obj_modeled1.scene)
   })
 
-  load_model2(() => {
-    scene.add(obj_modeled2.scene)
-  })
-  load_model3(() => {
-    scene.add(obj_modeled3.scene)
-  })
+  // load_model2(() => {
+  //   scene.add(obj_modeled2.scene)
+  // })
+  // load_model3(() => {
+  //   scene.add(obj_modeled3.scene)
+  // })
 
-  load_model4(() => {
-    scene.add(obj_modeled4.scene)
-  })
+  // load_model4(() => {
+  //   scene.add(obj_modeled4.scene)
+  // })
 
-  load_model5(() => {
-    scene.add(obj_modeled5.scene)
-  })
+  // load_model5(() => {
+  //   scene.add(obj_modeled5.scene)
+  // })
 
   load_model6(() => {
     scene.add(obj_modeled6.scene)
@@ -522,71 +529,186 @@ function renderMap(mapWidth, mapHeight) {
   if (config.trees) {
     const tree1 = Tree();
     tree1.position.x = arcCenterX * 1.3;
+
+    let shadows_tree;
+
+    tree1.traverse((child) => {
+      if (child.isMesh) {
+        shadows_tree = child
+        shadows_tree.castShadow = true
+      }
+    })
     scene.add(tree1);
 
     const tree2 = Tree();
     tree2.position.y = arcCenterX * 1.9;
     tree2.position.x = arcCenterX * 1.3;
+
+    let shadows_tree2;
+
+    tree2.traverse((child) => {
+      if (child.isMesh) {
+        shadows_tree2 = child
+        shadows_tree2.castShadow = true
+      }
+    })
     scene.add(tree2);
 
     const tree3 = Tree();
     tree3.position.x = arcCenterX * 0.8;
     tree3.position.y = arcCenterX * 2;
+    
+    let shadows_tree3;
+
+    tree3.traverse((child) => {
+      if (child.isMesh) {
+        shadows_tree3 = child
+        shadows_tree3.castShadow = true
+      }
+    })
     scene.add(tree3);
 
     const tree4 = Tree();
     tree4.position.x = arcCenterX * 1.8;
     tree4.position.y = arcCenterX * 2;
+    let shadows_tree4;
+
+    tree4.traverse((child) => {
+      if (child.isMesh) {
+        shadows_tree4 = child
+        shadows_tree4.castShadow = true
+      }
+    })
     scene.add(tree4);
 
     const tree5 = Tree();
     tree5.position.x = -arcCenterX * 1;
     tree5.position.y = arcCenterX * 2;
+    let shadows_tree5;
+
+    tree5.traverse((child) => {
+      if (child.isMesh) {
+        shadows_tree5 = child
+        shadows_tree5.castShadow = true
+      }
+    })
     scene.add(tree5);
 
     const tree6 = Tree();
     tree6.position.x = -arcCenterX * 2;
     tree6.position.y = arcCenterX * 1.8;
+    let shadows_tree6;
+
+    tree6.traverse((child) => {
+      if (child.isMesh) {
+        shadows_tree6 = child
+        shadows_tree6.castShadow = true
+      }
+    })
     scene.add(tree6);
 
     const tree7 = Tree();
     tree7.position.x = arcCenterX * 0.8;
     tree7.position.y = -arcCenterX * 2;
+    let shadows_tree7;
+
+    tree7.traverse((child) => {
+      if (child.isMesh) {
+        shadows_tree7 = child
+        shadows_tree7.castShadow = true
+      }
+    })
     scene.add(tree7);
 
     const tree8 = Tree();
     tree8.position.x = arcCenterX * 1.8;
     tree8.position.y = -arcCenterX * 2;
+    let shadows_tree8;
+
+    tree8.traverse((child) => {
+      if (child.isMesh) {
+        shadows_tree8 = child
+        shadows_tree8.castShadow = true
+      }
+    })
     scene.add(tree8);
 
     const tree9 = Tree();
     tree9.position.x = -arcCenterX * 1;
     tree9.position.y = -arcCenterX * 2;
+    let shadows_tree9;
+
+    tree9.traverse((child) => {
+      if (child.isMesh) {
+        shadows_tree9 = child
+        shadows_tree9.castShadow = true
+      }
+    })
     scene.add(tree9);
 
     const tree10 = Tree();
     tree10.position.x = -arcCenterX * 2;
     tree10.position.y = -arcCenterX * 1.8;
+    let shadows_tree10;
+
+    tree10.traverse((child) => {
+      if (child.isMesh) {
+        shadows_tree10 = child
+        shadows_tree10.castShadow = true
+      }
+    })
     scene.add(tree10);
 
     const tree11 = Tree();
     tree11.position.x = arcCenterX * 0.6;
     tree11.position.y = -arcCenterX * 2.3;
+    let shadows_tree11;
+
+    tree11.traverse((child) => {
+      if (child.isMesh) {
+        shadows_tree11 = child
+        shadows_tree11.castShadow = true
+      }
+    })
     scene.add(tree11);
 
     const tree12 = Tree();
     tree12.position.x = arcCenterX * 1.5;
     tree12.position.y = -arcCenterX * 2.4;
+    let shadows_tree12;
+
+    tree12.traverse((child) => {
+      if (child.isMesh) {
+        shadows_tree12 = child
+        shadows_tree12.castShadow = true
+      }
+    })
     scene.add(tree12);
 
     const tree13 = Tree();
     tree13.position.x = -arcCenterX * 0.7;
     tree13.position.y = -arcCenterX * 2.4;
+    let shadows_tree13;
+
+    tree13.traverse((child) => {
+      if (child.isMesh) {
+        shadows_tree13 = child
+        shadows_tree13.castShadow = true
+      }
+    })
     scene.add(tree13);
 
     const tree14 = Tree();
     tree14.position.x = -arcCenterX * 1.5;
     tree14.position.y = -arcCenterX * 1.8;
+    let shadows_tree14;
+
+    tree14.traverse((child) => {
+      if (child.isMesh) {
+        shadows_tree14 = child
+        shadows_tree14.castShadow = true
+      }
+    })
     scene.add(tree14);
   }
 }
@@ -674,95 +796,6 @@ function Car() {
   return car;
 }
 
-function getTruckFrontTexture() {
-  const canvas = document.createElement("canvas");
-  canvas.width = 32;
-  canvas.height = 32;
-  const context = canvas.getContext("2d");
-
-  context.fillStyle = "#ffffff";
-  context.fillRect(0, 0, 32, 32);
-
-  context.fillStyle = "#666666";
-  context.fillRect(0, 5, 32, 10);
-
-  return new THREE.CanvasTexture(canvas);
-}
-
-function getTruckSideTexture() {
-  const canvas = document.createElement("canvas");
-  canvas.width = 32;
-  canvas.height = 32;
-  const context = canvas.getContext("2d");
-
-  context.fillStyle = "#ffffff";
-  context.fillRect(0, 0, 32, 32);
-
-  context.fillStyle = "#666666";
-  context.fillRect(17, 5, 15, 10);
-
-  return new THREE.CanvasTexture(canvas);
-}
-
-function Truck() {
-  const truck = new THREE.Group();
-  const color = pickRandom(vehicleColors);
-
-  const base = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(100, 25, 5),
-    new THREE.MeshLambertMaterial({ color: 0xb4c6fc })
-  );
-  base.position.z = 10;
-  truck.add(base);
-
-  const cargo = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(75, 35, 40),
-    new THREE.MeshLambertMaterial({ color: 0xffffff }) // 0xb4c6fc
-  );
-  cargo.position.x = -15;
-  cargo.position.z = 30;
-  cargo.castShadow = true;
-  cargo.receiveShadow = true;
-  truck.add(cargo);
-
-  const truckFrontTexture = getTruckFrontTexture();
-  truckFrontTexture.center = new THREE.Vector2(0.5, 0.5);
-  truckFrontTexture.rotation = Math.PI / 2;
-
-  const truckLeftTexture = getTruckSideTexture();
-  truckLeftTexture.flipY = false;
-
-  const truckRightTexture = getTruckSideTexture();
-
-  const cabin = new THREE.Mesh(new THREE.BoxBufferGeometry(25, 30, 30), [
-    new THREE.MeshLambertMaterial({ color, map: truckFrontTexture }),
-    new THREE.MeshLambertMaterial({ color }), // back
-    new THREE.MeshLambertMaterial({ color, map: truckLeftTexture }),
-    new THREE.MeshLambertMaterial({ color, map: truckRightTexture }),
-    new THREE.MeshLambertMaterial({ color }), // top
-    new THREE.MeshLambertMaterial({ color }) // bottom
-  ]);
-  cabin.position.x = 40;
-  cabin.position.z = 20;
-  cabin.castShadow = true;
-  cabin.receiveShadow = true;
-  truck.add(cabin);
-
-  const backWheel = Wheel();
-  backWheel.position.x = -30;
-  truck.add(backWheel);
-
-  const middleWheel = Wheel();
-  middleWheel.position.x = 10;
-  truck.add(middleWheel);
-
-  const frontWheel = Wheel();
-  frontWheel.position.x = 38;
-  truck.add(frontWheel);
-
-  return truck;
-}
-
 function Wheel() {
   const wheel = new THREE.Mesh(wheelGeometry, wheelMaterial);
   wheel.position.z = 6;
@@ -812,6 +845,15 @@ window.addEventListener("keydown", function (event) {
   if (event.key == "R" || event.key == "r") {
     reset();
     return;
+  } if (event.key == "f" || event.key == "F") {
+    first_person = true
+    third_person = false
+
+
+  } if (event.key == "t" || event.key == "T") {
+    first_person = false
+    third_person = true
+
   }
 });
 window.addEventListener("keyup", function (event) {
@@ -839,7 +881,7 @@ function animation(timestamp) {
 
 
   // Add a new vehicle at the beginning and with every 5th lap
-  if(otherVehicles.length < (laps + 1) / 5 && laps < 16) {
+  if (otherVehicles.length < (laps + 1) / 5 && laps < 16) {
     addVehicle();
   }
 
@@ -849,21 +891,56 @@ function animation(timestamp) {
   lastTimestamp = timestamp;
 }
 
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 // Function to move our car 
 
 function movePlayerCar(timeDelta) {
+
+
   const playerSpeed = getPlayerSpeed();
   playerAngleMoved -= playerSpeed * timeDelta;
-
   const totalPlayerAngle = playerAngleInitial + playerAngleMoved;
+
 
   const playerX = Math.cos(totalPlayerAngle) * trackRadius - arcCenterX;
   const playerY = Math.sin(totalPlayerAngle) * trackRadius;
 
-  playerCar.position.x = playerX;
-  playerCar.position.y = playerY;
+  playerCar.scene.position.x = playerX;
+  playerCar.scene.position.y = playerY;
 
-  playerCar.rotation.z = totalPlayerAngle - Math.PI / 2;
+
+  playerCar.scene.rotation.y = totalPlayerAngle - Math.PI / 13;
+
+
+  if (first_person) {
+    requestAnimationFrame(animate);
+
+    // Atualize a posição da câmera para seguir o objeto
+    camera.position.copy(playerCar.scene.position).add(new THREE.Vector3(0, 0, 100)); // Altere a posição da câmera conforme desejado
+
+    // Aponte a câmera para o objeto
+    camera.lookAt(playerCar.scene.position);
+    // camera.rotation.z = - Math.PI / 2
+    // camera.rotation.y = Math.PI / 13
+    camera.rotation.z = totalPlayerAngle - Math.PI / 0.9;
+
+    // Renderize a cena
+    // renderer.render(scene, camera);
+  } if (third_person) {
+
+    // camera.position.set(0, -1000, 500); // altera a posição da câmera
+    // camera.lookAt(scene.position);
+
+    // renderer.render(scene, camera);
+    // camera.position.set(0, -1000, 500); // altera a posição da câmera
+    // camera.lookAt(new THREE.Vector3(0, -100, 0)); // ajusta o alvo da câmera
+
+
+
+  }
 }
 
 // Function to move other vehicles 
@@ -893,31 +970,23 @@ function getPlayerSpeed() {
 }
 
 function addVehicle() {
-  const vehicleTypes = ["car", "truck"];
+  const type = "car";
 
-  const type = pickRandom(vehicleTypes);
   const speed = getVehicleSpeed(type);
   const clockwise = Math.random() >= 0.5;
 
   const angle = clockwise ? Math.PI / 2 : -Math.PI / 2;
 
-  const mesh = type == "car" ? Car() : Truck();
+  const mesh = Car();
   scene.add(mesh);
 
   otherVehicles.push({ mesh, type, speed, clockwise, angle });
 }
-
 function getVehicleSpeed(type) {
-  if (type == "car") {
-    const minimumSpeed = 1;
-    const maximumSpeed = 2;
-    return minimumSpeed + Math.random() * (maximumSpeed - minimumSpeed);
-  }
-  if (type == "truck") {
-    const minimumSpeed = 0.6;
-    const maximumSpeed = 1.5;
-    return minimumSpeed + Math.random() * (maximumSpeed - minimumSpeed);
-  }
+  const minimumSpeed = 1;
+  const maximumSpeed = 2;
+  return minimumSpeed + Math.random() * (maximumSpeed - minimumSpeed);
+
 }
 
 
@@ -937,4 +1006,11 @@ window.addEventListener("resize", () => {
   renderer.render(scene, camera);
 
 });
+
+function animate() {
+
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
+}
+animate();
 
